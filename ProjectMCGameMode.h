@@ -13,6 +13,18 @@ class AProjectMCGameMode : public AGameModeBase
 
 public:
 	AProjectMCGameMode();
+
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+	/** Default pawn class that can be set in the editor */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Game Mode Settings", meta = (DisplayName = "Default Pawn Class"))
+	TSubclassOf<class APawn> DefaultPawnBlueprintClass;
+
+private:
+	/** Fallback pawn class found in constructor */
+	TSubclassOf<class APawn> FallbackPawnClass;
 };
 
 
